@@ -101,7 +101,7 @@ public class SoundButton extends ConstraintLayout implements NavigationButton {
   @Override
   protected void onDetachedFromWindow() {
     super.onDetachedFromWindow();
-    clearListeners();
+    //clearListeners();
   }
 
   /**
