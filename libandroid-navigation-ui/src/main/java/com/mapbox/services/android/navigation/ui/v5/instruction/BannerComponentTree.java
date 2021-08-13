@@ -62,12 +62,14 @@ class BannerComponentTree {
    * @param textView in which to load text and images
    */
   void loadInstruction(TextView textView) {
-    for (NodeCreator nodeCreator : nodeCreators) {
-      nodeCreator.preProcess(textView, bannerComponentNodes);
-    }
+  	try {
+		for (NodeCreator nodeCreator : nodeCreators) {
+			nodeCreator.preProcess(textView, bannerComponentNodes);
+		}
 
-    for (NodeCreator nodeCreator : nodeCreators) {
-      nodeCreator.postProcess(textView, bannerComponentNodes);
-    }
+		for (NodeCreator nodeCreator : nodeCreators) {
+			nodeCreator.postProcess(textView, bannerComponentNodes);
+		}
+	} catch (Exception ignored) {}
   }
 }

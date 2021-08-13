@@ -47,24 +47,26 @@ class ExitSignCreator extends NodeCreator<BannerComponentNode, ExitSignVerifier>
    */
   @Override
   void postProcess(TextView textView, List<BannerComponentNode> bannerComponentNodes) {
-    if (exitNumber != null) {
-      LayoutInflater inflater = (LayoutInflater) textView.getContext().getSystemService(Context
-        .LAYOUT_INFLATER_SERVICE);
+  	try {
+		if (exitNumber != null) {
+			LayoutInflater inflater = (LayoutInflater) textView.getContext().getSystemService(Context
+					.LAYOUT_INFLATER_SERVICE);
 
-      ViewGroup root = (ViewGroup) textView.getParent();
+			ViewGroup root = (ViewGroup) textView.getParent();
 
-      TextView exitSignView;
+			TextView exitSignView;
 
-      if (modifier.equals(LEFT)) {
-        exitSignView = (TextView) inflater.inflate(R.layout.exit_sign_view_left, root, false);
-      } else {
-        exitSignView = (TextView) inflater.inflate(R.layout.exit_sign_view_right, root, false);
-      }
+			if (modifier.equals(LEFT)) {
+				exitSignView = (TextView) inflater.inflate(R.layout.exit_sign_view_left, root, false);
+			} else {
+				exitSignView = (TextView) inflater.inflate(R.layout.exit_sign_view_right, root, false);
+			}
 
-      exitSignView.setText(exitNumber);
+			exitSignView.setText(exitNumber);
 
-      textViewUtils.setImageSpan(textView, exitSignView, startIndex, startIndex + exitNumber
-        .length());
-    }
+			textViewUtils.setImageSpan(textView, exitSignView, startIndex, startIndex + exitNumber
+					.length());
+		}
+	} catch (Exception ignored) {}
   }
 }
